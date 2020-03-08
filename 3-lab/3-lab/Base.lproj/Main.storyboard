@@ -163,12 +163,29 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yih-ms-SVC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="p1U-1C-CNs"/>
+                    <navigationItem key="navigationItem" id="p1U-1C-CNs">
+                        <rightBarButtonItems>
+                            <barButtonItem title="save" id="1Fs-c2-fbh">
+                                <connections>
+                                    <action selector="createView:" destination="vUx-l5-z1d" id="oju-EE-E4E"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="delete" id="C71-BC-hy7">
+                                <connections>
+                                    <action selector="deleteView:" destination="vUx-l5-z1d" id="6Ya-jE-Ugv"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="heightField" destination="JeH-Gr-BOJ" id="lcE-ej-kf0"/>
                         <outlet property="widthField" destination="Ad1-LZ-n93" id="cVY-zT-ORc"/>
                         <outlet property="xField" destination="EpL-Wh-6b7" id="Upo-ug-lIP"/>
                         <outlet property="yField" destination="hzz-80-6BB" id="WJ3-BF-L1p"/>
+                        <outletCollection property="buttons" destination="0jS-M9-f42" collectionClass="NSMutableArray" id="iHY-m3-Nan"/>
+                        <outletCollection property="buttons" destination="cW7-3s-12i" collectionClass="NSMutableArray" id="0qt-JG-VB3"/>
+                        <outletCollection property="buttons" destination="Qkd-e1-MkP" collectionClass="NSMutableArray" id="8Uw-Ov-DPd"/>
+                        <outletCollection property="buttons" destination="ODF-Ed-ekR" collectionClass="NSMutableArray" id="PPT-Wb-O0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxY-3m-6of" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

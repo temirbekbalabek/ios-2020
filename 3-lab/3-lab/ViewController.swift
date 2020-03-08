@@ -27,8 +27,9 @@ class ViewController: UIViewController {
             nextView.backgroundColor = c
             nextView.frame = CGRect(x: x, y: y, width: w, height: h)
             self.view.addSubview(nextView)
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.figureDidTap))
-//            nextView.addGestureRecognizer(tapGestureRecognizer)
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.viewDidTap))
+            nextView.addGestureRecognizer(tapGestureRecognizer)
             
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.viewDidPan(recognizer:)))
             nextView.addGestureRecognizer(panGestureRecognizer)
@@ -40,16 +41,17 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(selectVC, animated: true)
         
     }
-//    @objc func figureDidTap(_ sender: UITapGestureRecognizer) {
-//        if let nextView = sender.view {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(identifier: "SecondViewController") as CreateFigureViewController
-//            vc.selectedFigure = figure
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
-    
     var baseOrigin: CGPoint!
+    
+    @objc func viewDidTap(_ sender: UITapGestureRecognizer) {
+        if let nextView = sender.view {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "SecondViewController") as SecondViewController
+            vc.selectedView = nextView
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @objc func viewDidPan(recognizer: UIPanGestureRecognizer) {
         if let nextView = recognizer.view {
             switch recognizer.state {
@@ -63,13 +65,6 @@ class ViewController: UIViewController {
             }
         }
     }
-//    @IBAction func viewDidPinch(_ gestureRecognizer : UIPinchGestureRecognizer) {   guard gestureRecognizer.view != nil else { return }
-//
-//    if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-//       gestureRecognizer.view?.transform = (gestureRecognizer.view?.transform.
-//                     scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))!
-//       gestureRecognizer.scale = 1.0
-//    }}
 
     @objc func viewDidPinch(_ sender: UIPinchGestureRecognizer) {
         if let figure = sender.view {
